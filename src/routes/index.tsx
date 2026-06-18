@@ -1,8 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Layout } from "@/components/scorpio/Layout";
+import { HeroBackground } from "@/components/scorpio/HeroBackground";
 import { Sparkles, Users, Clock, Shield, ArrowRight, Sliders, Smile, MapPin, Zap, Timer, Lightbulb } from "lucide-react";
-import scorpionHero from "@/assets/scorpion-hero.png";
-import logoAsset from "@/assets/scorpio-logo.png.asset.json";
 import catParty from "@/assets/cat-party.jpg";
 import catMystery from "@/assets/cat-mystery.jpg";
 import catFamily from "@/assets/cat-family.jpg";
@@ -36,21 +36,15 @@ const features = [
 ];
 
 function HomePage() {
+  const navigate = useNavigate();
+  const [prompt, setPrompt] = useState("");
+
   return (
     <Layout>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        {/* Hero background: the reference scorpio key visual */}
-        <div className="absolute inset-0 -z-10 pointer-events-none">
-          <img
-            src={logoAsset.url}
-            alt=""
-            aria-hidden
-            className="absolute right-[-6%] bottom-0 w-[78%] max-w-[1100px] object-contain opacity-70 select-none"
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,oklch(0.3_0.2_300/0.35),transparent_60%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
-        </div>
+        <HeroBackground />
+
 
 
         <div className="mx-auto max-w-7xl px-6 pt-12 pb-20 grid lg:grid-cols-[1.1fr_1fr] gap-10 items-start">
@@ -95,12 +89,20 @@ function HomePage() {
               <div className="relative">
                 <textarea
                   maxLength={300}
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
                   placeholder="We are 8 cousins, ages 10–18, funny but family-safe..."
                   className="w-full h-28 resize-none rounded-lg bg-input/40 border border-border/60 p-3 text-sm focus:outline-none focus:border-primary placeholder:text-muted-foreground/70"
                 />
-                <span className="absolute bottom-2 right-3 text-xs text-muted-foreground">0/300</span>
+                <span className="absolute bottom-2 right-3 text-xs text-muted-foreground">{prompt.length}/300</span>
               </div>
-              <button className="mt-4 w-full h-11 rounded-lg bg-gradient-primary text-primary-foreground font-semibold inline-flex items-center justify-center gap-2 shadow-glow hover:shadow-glow-strong transition-shadow">
+              <button
+                onClick={() => {
+                  if (prompt.trim()) sessionStorage.setItem("scorpio:prompt", prompt);
+                  navigate({ to: "/recommendations" });
+                }}
+                className="mt-4 w-full h-11 rounded-lg bg-gradient-primary text-primary-foreground font-semibold inline-flex items-center justify-center gap-2 shadow-glow hover:shadow-glow-strong transition-shadow"
+              >
                 <Sparkles className="size-4" /> Generate Game
               </button>
             </div>
@@ -116,9 +118,10 @@ function HomePage() {
                 <FormRow icon={Smile} label="Vibe" value="Funny, Family-Safe" />
                 <FormRow icon={MapPin} label="Location" value="Indoor" />
               </div>
-              <button className="mt-5 w-full h-11 rounded-lg border border-primary/60 text-primary-glow font-semibold hover:bg-primary/10 transition-colors">
+              <Link to="/recommendations" className="mt-5 w-full h-11 rounded-lg border border-primary/60 text-primary-glow font-semibold hover:bg-primary/10 transition-colors inline-flex items-center justify-center">
                 Set Up Game
-              </button>
+              </Link>
+
             </div>
           </div>
         </div>
