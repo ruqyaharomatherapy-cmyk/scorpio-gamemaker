@@ -40,9 +40,18 @@ function HomePage() {
     <Layout>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
+        {/* Hero background: the reference scorpio key visual */}
+        <div className="absolute inset-0 -z-10 pointer-events-none">
+          <img
+            src={logoAsset.url}
+            alt=""
+            aria-hidden
+            className="absolute right-[-6%] bottom-0 w-[78%] max-w-[1100px] object-contain opacity-70 select-none"
+          />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,oklch(0.3_0.2_300/0.35),transparent_60%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
         </div>
+
 
         <div className="mx-auto max-w-7xl px-6 pt-12 pb-20 grid lg:grid-cols-[1.1fr_1fr] gap-10 items-start">
           {/* LEFT */}
@@ -72,16 +81,8 @@ function HomePage() {
               <Chip icon={Shield}>Safe & Inclusive</Chip>
             </div>
 
-            {/* Scorpion visual + scorpio wordmark behind */}
-            <div className="relative mt-10 h-[280px] md:h-[340px]">
-              <img
-                src={logoAsset.url}
-                alt=""
-                aria-hidden
-                className="absolute inset-0 w-full h-full object-contain opacity-90 select-none pointer-events-none"
-              />
-            </div>
           </div>
+
 
           {/* RIGHT PANELS */}
           <div className="space-y-6 lg:pt-4">
