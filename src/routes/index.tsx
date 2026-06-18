@@ -1,8 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Layout } from "@/components/scorpio/Layout";
+import { HeroBackground } from "@/components/scorpio/HeroBackground";
 import { Sparkles, Users, Clock, Shield, ArrowRight, Sliders, Smile, MapPin, Zap, Timer, Lightbulb } from "lucide-react";
-import scorpionHero from "@/assets/scorpion-hero.png";
-import logoAsset from "@/assets/scorpio-logo.png.asset.json";
 import catParty from "@/assets/cat-party.jpg";
 import catMystery from "@/assets/cat-mystery.jpg";
 import catFamily from "@/assets/cat-family.jpg";
@@ -36,21 +36,15 @@ const features = [
 ];
 
 function HomePage() {
+  const navigate = useNavigate();
+  const [prompt, setPrompt] = useState("");
+
   return (
     <Layout>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        {/* Hero background: the reference scorpio key visual */}
-        <div className="absolute inset-0 -z-10 pointer-events-none">
-          <img
-            src={logoAsset.url}
-            alt=""
-            aria-hidden
-            className="absolute right-[-6%] bottom-0 w-[78%] max-w-[1100px] object-contain opacity-70 select-none"
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_40%,oklch(0.3_0.2_300/0.35),transparent_60%)]" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
-        </div>
+        <HeroBackground />
+
 
 
         <div className="mx-auto max-w-7xl px-6 pt-12 pb-20 grid lg:grid-cols-[1.1fr_1fr] gap-10 items-start">
