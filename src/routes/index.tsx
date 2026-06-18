@@ -97,7 +97,10 @@ function HomePage() {
                 <span className="absolute bottom-2 right-3 text-xs text-muted-foreground">{prompt.length}/300</span>
               </div>
               <button
-                onClick={() => navigate({ to: "/recommendations", search: { prompt } as never })}
+                onClick={() => {
+                  if (prompt.trim()) sessionStorage.setItem("scorpio:prompt", prompt);
+                  navigate({ to: "/recommendations" });
+                }}
                 className="mt-4 w-full h-11 rounded-lg bg-gradient-primary text-primary-foreground font-semibold inline-flex items-center justify-center gap-2 shadow-glow hover:shadow-glow-strong transition-shadow"
               >
                 <Sparkles className="size-4" /> Generate Game
