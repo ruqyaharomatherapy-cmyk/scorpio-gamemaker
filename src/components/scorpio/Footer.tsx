@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/scorpio-mark.png.asset.json";
+import { ScorpioLogo } from "./Logo";
 
 export function Footer() {
   return (
     <footer className="mt-32 border-t border-border/40 bg-background/60">
       <div className="mx-auto max-w-7xl px-6 py-16 grid gap-12 md:grid-cols-5">
         <div className="md:col-span-2 space-y-4">
-          <img src={logoAsset.url} alt="Scorpio" className="h-10 w-auto" />
+          <ScorpioLogo size={28} />
           <p className="text-sm text-muted-foreground max-w-xs">
             Your AI Game Master for unforgettable moments.
           </p>
