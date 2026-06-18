@@ -117,6 +117,9 @@ function HomePage() {
                 <FormRow icon={Users} label="Ages" value="10 – 18" />
                 <FormRow icon={Smile} label="Vibe" value="Funny, Family-Safe" />
                 <FormRow icon={MapPin} label="Location" value="Indoor" />
+                <FormRow icon={Clock} label="Time" value="45 min" />
+                <FormRow icon={Sparkles} label="Equipment" value="None" />
+                <FormRow icon={Shield} label="Safety" value="Family-Safe" />
               </div>
               <Link to="/recommendations" className="mt-5 w-full h-11 rounded-lg border border-primary/60 text-primary-glow font-semibold hover:bg-primary/10 transition-colors inline-flex items-center justify-center">
                 Set Up Game
