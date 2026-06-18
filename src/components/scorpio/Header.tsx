@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ScorpioLogo } from "./Logo";
+import logoAsset from "@/assets/scorpio-logo.png.asset.json";
 import { AuthModal } from "./AuthModal";
 
 const nav = [
@@ -16,9 +16,9 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/40">
-        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between gap-6">
-          <Link to="/" className="shrink-0">
-            <ScorpioLogo size={28} />
+        <div className="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between gap-6">
+          <Link to="/" className="shrink-0 flex items-center">
+            <img src={logoAsset.url} alt="Scorpio" className="h-10 w-auto object-contain" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
