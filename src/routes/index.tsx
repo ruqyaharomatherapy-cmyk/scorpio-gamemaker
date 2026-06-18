@@ -89,12 +89,17 @@ function HomePage() {
               <div className="relative">
                 <textarea
                   maxLength={300}
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
                   placeholder="We are 8 cousins, ages 10–18, funny but family-safe..."
                   className="w-full h-28 resize-none rounded-lg bg-input/40 border border-border/60 p-3 text-sm focus:outline-none focus:border-primary placeholder:text-muted-foreground/70"
                 />
-                <span className="absolute bottom-2 right-3 text-xs text-muted-foreground">0/300</span>
+                <span className="absolute bottom-2 right-3 text-xs text-muted-foreground">{prompt.length}/300</span>
               </div>
-              <button className="mt-4 w-full h-11 rounded-lg bg-gradient-primary text-primary-foreground font-semibold inline-flex items-center justify-center gap-2 shadow-glow hover:shadow-glow-strong transition-shadow">
+              <button
+                onClick={() => navigate({ to: "/recommendations", search: { prompt } as never })}
+                className="mt-4 w-full h-11 rounded-lg bg-gradient-primary text-primary-foreground font-semibold inline-flex items-center justify-center gap-2 shadow-glow hover:shadow-glow-strong transition-shadow"
+              >
                 <Sparkles className="size-4" /> Generate Game
               </button>
             </div>
@@ -110,9 +115,10 @@ function HomePage() {
                 <FormRow icon={Smile} label="Vibe" value="Funny, Family-Safe" />
                 <FormRow icon={MapPin} label="Location" value="Indoor" />
               </div>
-              <button className="mt-5 w-full h-11 rounded-lg border border-primary/60 text-primary-glow font-semibold hover:bg-primary/10 transition-colors">
+              <Link to="/recommendations" className="mt-5 w-full h-11 rounded-lg border border-primary/60 text-primary-glow font-semibold hover:bg-primary/10 transition-colors inline-flex items-center justify-center">
                 Set Up Game
-              </button>
+              </Link>
+
             </div>
           </div>
         </div>
