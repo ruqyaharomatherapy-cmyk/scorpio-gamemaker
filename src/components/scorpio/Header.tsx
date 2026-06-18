@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/scorpio-logo.png.asset.json";
+import logoAsset from "@/assets/scorpio-mark.png.asset.json";
 
 const nav = [
   { to: "/", label: "Home" },
