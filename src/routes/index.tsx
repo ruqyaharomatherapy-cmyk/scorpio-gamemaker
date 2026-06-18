@@ -41,9 +41,28 @@ function HomePage() {
 
   return (
     <Layout>
+      {/* Page-wide cosmic background */}
+      <div aria-hidden className="fixed inset-0 -z-20 pointer-events-none">
+        <div className="absolute inset-0 bg-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,oklch(0.25_0.18_300/0.45),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_85%_30%,oklch(0.3_0.22_305/0.35),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_10%_70%,oklch(0.28_0.2_295/0.3),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_100%,oklch(0.22_0.16_300/0.35),transparent_65%)]" />
+        {/* subtle starfield grain */}
+        <div
+          className="absolute inset-0 opacity-[0.07] mix-blend-screen"
+          style={{
+            backgroundImage:
+              "radial-gradient(1px 1px at 20% 30%, white, transparent), radial-gradient(1px 1px at 70% 60%, white, transparent), radial-gradient(1px 1px at 40% 80%, white, transparent), radial-gradient(1px 1px at 85% 15%, white, transparent), radial-gradient(1px 1px at 15% 75%, white, transparent)",
+            backgroundSize: "600px 600px",
+          }}
+        />
+      </div>
+
       {/* HERO */}
       <section className="relative overflow-hidden">
         <HeroBackground />
+
 
 
 
